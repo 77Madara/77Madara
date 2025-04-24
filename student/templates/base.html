@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Chat{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>💬 Plateforme de Chat</h1>
+            <nav>
+                {% if user.is_authenticated %}
+                    <p>Bienvenue, {{ user.username }} ! <a href="{% url 'logout' %}">Déconnexion</a></p>
+                {% else %}
+                    <a href="{% url 'login' %}">Connexion</a> | <a href="{% url 'register' %}">Inscription</a>
+                {% endif %}
+            </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
